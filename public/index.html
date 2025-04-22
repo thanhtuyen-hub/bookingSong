@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đặt Lịch Hát Phòng Trà</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="container">
+    <h2 class="title">ĐẶT LỊCH HÁT TẠI COFFEE GỐC PHỐ</h2>
+    <div class="box">
+        <div class="image">
+            <img src="./gp.jpg" alt="Quán cà phê Gốc Phố">
+        </div>
+        <div class="information">
+            <img class="info-logo" src="./logo.jpg" alt="">
+            <h1>💥 Điền thông tin của bạn 💥 </h1>
+            <a class="list" href="/danhsach">Danh sách đã đăng kí</a>
+            <form id="register-form">
+                <label for="name">Tên của bạn:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="song">Tên bài hát muốn hát:</label>
+                <input type="text" id="song" name="song" required>
+
+                <button type="submit">Đăng ký</button>
+                <div class="footer">
+                    <p>Mọi vấn đề liên hệ qua</p>
+                    <p>Sdt: 0333.181.866 | Mai Thế Toàn</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script>
+document.getElementById('register-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    fetch('/register', {
+        method: 'POST',
+        body: new URLSearchParams(formData)
+    }).then(() => {
+        window.location.href = '/danhsach';
+    });
+});
+</script>
+</body>
+</html>
